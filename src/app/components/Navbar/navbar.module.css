@@ -1,0 +1,354 @@
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  background: linear-gradient(
+    135deg,
+    #06142F,
+    #0B2554,
+    #123B78
+  );
+
+  border-bottom: 1px solid rgba(96, 165, 250, 0.25);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logoContainer {
+  background: #EFF6FF;
+  border: 1px solid rgba(147, 197, 253, 0.25);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.logoContainer:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 25px rgba(96, 165, 250, 0.35);
+}
+
+.logo {
+  width: 125px;
+
+  height: 60px;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* =========================================
+   NAVIGATION LIST
+========================================= */
+
+.navList {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  flex: 1;
+}
+
+
+/* =========================================
+   NAV ITEM
+========================================= */
+
+.navItem {
+  position: relative;
+}
+
+
+/* =========================================
+   NAV LINK
+========================================= */
+
+.navLink {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 11px 16px;
+
+  border-radius: 12px;
+
+  color: #dbeafe;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* Hover */
+
+.navLink:hover {
+  color: #ffffff;
+
+  background: rgba(147, 197, 253, 0.12);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   ACTIVE UNDERLINE
+========================================= */
+
+.navLink::after {
+  content: "";
+
+  position: absolute;
+
+  left: 16px;
+
+  right: 16px;
+
+  bottom: 3px;
+
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #60a5fa,
+    #a78bfa,
+    #f472b6
+  );
+
+  transform: scaleX(0);
+
+  transform-origin: center;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  transform: scaleX(1);
+}
+
+
+
+
+.navLink.active {
+  color: #ffffff;
+
+  background: rgba(96, 165, 250, 0.16);
+
+  box-shadow:
+    inset 0 0 20px rgba(96, 165, 250, 0.06);
+}
+
+
+
+
+.ctaButton {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  min-width: 145px;
+
+  padding: 13px 20px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+  135deg,
+  #06142F,
+  #0B2554,
+  #123B78
+);
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 8px 25px rgba(59, 130, 246, 0.35);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 35px rgba(96, 165, 250, 0.5);
+}
+
+
+
+
+.arrow {
+  font-size: 18px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.ctaButton:hover .arrow {
+  transform: translateX(5px);
+}
+
+
+
+.menuButton {
+  display: none;
+
+  width: 44px;
+
+  height: 44px;
+
+  padding: 10px;
+
+  border: 1px solid rgba(147, 197, 253, 0.3);
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  cursor: pointer;
+}
+
+.menuButton span {
+  display: block;
+
+  width: 22px;
+
+  height: 2px;
+
+  margin: 4px auto;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .logoContainer {
+    width: 115px;
+
+    height: 56px;
+  }
+
+  .logo {
+    width: 115px;
+
+    height: 56px;
+  }
+
+  .navLink {
+    padding: 9px 10px;
+
+    font-size: 14px;
+  }
+
+  .ctaButton {
+    min-width: 120px;
+
+    padding: 11px 15px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    height: 70px;
+
+    padding: 0 16px;
+  }
+
+  .logoContainer {
+    width: 110px;
+
+    height: 52px;
+  }
+
+  .logo {
+    width: 110px;
+
+    height: 52px;
+  }
+
+  .navList {
+    display: none;
+  }
+
+  .ctaButton {
+    display: none;
+  }
+
+  .menuButton {
+    display: block;
+  }
+}
