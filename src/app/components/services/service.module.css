@@ -1,0 +1,1128 @@
+/* =====================================================
+   SERVICES PAGE
+===================================================== */
+
+.servicesPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 10% 30%,
+      rgba(30, 90, 190, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(150, 50, 220, 0.1),
+      transparent 30%
+    ),
+    #030817;
+
+  color: white;
+}
+
+.servicesSection {
+  width: 100%;
+  padding: 110px 0 80px;
+}
+
+.container {
+  width: min(1500px, calc(100% - 100px));
+  margin: 0 auto;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.sectionHeader {
+  display: grid;
+
+  grid-template-columns: 1fr 0.65fr;
+
+  align-items: end;
+
+  gap: 80px;
+
+  margin-bottom: 70px;
+}
+
+.headingArea {
+  max-width: 800px;
+}
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 25px;
+
+  padding: 9px 16px;
+
+  border: 1px solid rgba(70, 150, 255, 0.35);
+
+  border-radius: 50px;
+
+  background: rgba(20, 70, 140, 0.12);
+
+  color: #7bb9ff;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  box-shadow:
+    0 0 25px rgba(50, 130, 255, 0.06);
+}
+
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #56b5ff;
+
+  box-shadow:
+    0 0 12px rgba(80, 180, 255, 0.9);
+}
+
+.heading {
+  margin: 0;
+
+  color: #f5f7fc;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(58px, 6vw, 92px);
+
+  font-weight: 700;
+
+  line-height: 0.98;
+
+  letter-spacing: -3px;
+}
+
+.heading span {
+  background:
+    linear-gradient(
+      100deg,
+      #4599ff 5%,
+      #8a6bff 50%,
+      #d35bd2 95%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.exploreText {
+  max-width: 540px;
+
+  margin: 0 0 5px auto;
+
+  color: #91a6c7;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 18px;
+
+  line-height: 1.75;
+}
+
+/* =====================================================
+   SERVICES GRID
+===================================================== */
+
+.servicesGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+/* =====================================================
+   SERVICE CARD
+===================================================== */
+
+.serviceCard {
+  position: relative;
+
+  min-height: 400px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 34px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(70, 140, 230, 0.25);
+
+  border-radius: 25px;
+
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(50, 110, 220, 0.1),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(14, 39, 76, 0.92),
+      rgba(5, 18, 42, 0.95)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.serviceCard::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: -90px;
+  right: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(60, 130, 255, 0.08);
+
+  filter: blur(30px);
+
+  transition: 0.4s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(75, 165, 255, 0.55);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(50, 130, 255, 0.08);
+}
+
+.serviceCard:hover::before {
+  background: rgba(80, 150, 255, 0.18);
+}
+
+/* =====================================================
+   CARD NUMBER
+===================================================== */
+
+.cardNumber {
+  position: absolute;
+
+  top: 28px;
+  right: 30px;
+
+  color: rgba(100, 160, 235, 0.4);
+
+  font-family: monospace;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+}
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.iconBox {
+  position: relative;
+
+  width: 88px;
+  height: 88px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 42px;
+
+  border: 1px solid rgba(50, 160, 255, 0.4);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 105, 190, 0.3),
+      rgba(20, 50, 100, 0.2)
+    );
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.serviceCard:hover .iconBox {
+  transform: translateY(-4px) scale(1.04);
+
+  border-color: rgba(60, 200, 255, 0.8);
+
+  box-shadow:
+    0 0 20px rgba(40, 170, 255, 0.3),
+    0 0 55px rgba(40, 120, 255, 0.14),
+    inset 0 0 25px rgba(50, 150, 255, 0.12);
+}
+
+.serviceIcon {
+  color: #4bd3ff;
+
+  font-size: 32px;
+
+  line-height: 1;
+
+  text-shadow:
+    0 0 10px rgba(50, 205, 255, 0.9),
+    0 0 28px rgba(50, 140, 255, 0.6);
+
+  transition:
+    transform 0.35s ease,
+    text-shadow 0.35s ease;
+}
+
+.serviceCard:hover .serviceIcon {
+  transform: scale(1.15);
+
+  text-shadow:
+    0 0 10px rgba(70, 225, 255, 1),
+    0 0 25px rgba(70, 180, 255, 0.9),
+    0 0 50px rgba(80, 100, 255, 0.7);
+}
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.cardContent {
+  flex: 1;
+}
+
+.cardContent h2 {
+  margin: 0 0 16px;
+
+  color: #f4f6fb;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 27px;
+
+  line-height: 1.15;
+}
+
+.cardContent p {
+  margin: 0;
+
+  color: #91a6c5;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   LEARN MORE BUTTON
+===================================================== */
+
+.learnMore {
+  width: fit-content;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 30px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #f2f5fb;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+.learnMore:hover {
+  color: #65c7ff;
+}
+
+.learnArrow {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(80, 150, 240, 0.35);
+
+  border-radius: 50%;
+
+  color: #91bfff;
+
+  font-size: 18px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.learnMore:hover .learnArrow {
+  transform: translate(3px, -3px);
+
+  border-color: #4eb9ff;
+
+  background: rgba(50, 150, 255, 0.15);
+
+  box-shadow:
+    0 0 20px rgba(50, 160, 255, 0.2);
+}
+
+/* =====================================================
+   BOTTOM CTA
+===================================================== */
+
+.bottomCta {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-top: 70px;
+
+  padding: 42px;
+
+  border: 1px solid rgba(80, 150, 255, 0.2);
+
+  border-radius: 25px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(150, 60, 230, 0.12),
+      transparent 40%
+    ),
+    rgba(10, 29, 62, 0.65);
+}
+
+.ctaLabel {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #5caeff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.ctaContent h2 {
+  margin: 0 0 8px;
+
+  color: white;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 30px;
+}
+
+.ctaContent p {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #8fa4c4;
+
+  line-height: 1.6;
+}
+
+.startConversation {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 16px 23px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #367fff,
+      #bd3ddd
+    );
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 35px rgba(70, 90, 255, 0.2);
+
+  transition: 0.3s ease;
+}
+
+.startConversation:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 45px rgba(90, 80, 255, 0.35);
+}
+
+.startConversation span {
+  font-size: 18px;
+}
+
+/* =====================================================
+   MODAL BACKDROP
+===================================================== */
+
+.modalBackdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background: rgba(1, 5, 18, 0.85);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  animation: fadeIn 0.2s ease;
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+  position: relative;
+
+  width: min(760px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 42px;
+
+  border: 1px solid rgba(70, 160, 255, 0.4);
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(150, 60, 240, 0.2),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(30, 130, 255, 0.14),
+      transparent 40%
+    ),
+    #07152f;
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.65),
+    0 0 80px rgba(50, 120, 255, 0.12);
+
+  animation: modalIn 0.3s ease;
+}
+
+.modal::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: rgba(70, 150, 255, 0.35);
+
+  border-radius: 10px;
+}
+
+/* =====================================================
+   CLOSE
+===================================================== */
+
+.closeButton {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(100, 150, 220, 0.25);
+
+  border-radius: 50%;
+
+  background: rgba(20, 45, 85, 0.7);
+
+  color: #9eb1ce;
+
+  font-size: 26px;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.closeButton:hover {
+  color: white;
+
+  border-color: rgba(80, 170, 255, 0.7);
+
+  background: rgba(60, 130, 230, 0.18);
+
+  transform: rotate(90deg);
+}
+
+/* =====================================================
+   MODAL HEADER
+===================================================== */
+
+.modalTop {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding-right: 45px;
+}
+
+.modalIcon {
+  width: 72px;
+  height: 72px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(60, 190, 255, 0.55);
+
+  border-radius: 19px;
+
+  background: rgba(30, 100, 190, 0.2);
+
+  color: #52d5ff;
+
+  font-size: 31px;
+
+  text-shadow:
+    0 0 15px rgba(60, 210, 255, 0.9),
+    0 0 35px rgba(60, 140, 255, 0.6);
+
+  box-shadow:
+    0 0 30px rgba(40, 160, 255, 0.1);
+}
+
+.modalServiceNumber {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #55aaff;
+
+  font-family: monospace;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.modalTop h2 {
+  margin: 0;
+
+  color: white;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(28px, 4vw, 40px);
+
+  line-height: 1.1;
+}
+
+/* =====================================================
+   GUIDANCE
+===================================================== */
+
+.guidanceBox {
+  margin-top: 30px;
+
+  padding: 24px;
+
+  border-left: 3px solid #4aa9ff;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(40, 120, 220, 0.12),
+      rgba(90, 60, 180, 0.06)
+    );
+}
+
+.guidanceTitle {
+  margin-bottom: 10px;
+
+  color: #6db8ff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.guidanceBox p {
+  margin: 0;
+
+  color: #a9bad2;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+}
+
+/* =====================================================
+   MODAL BLOCK
+===================================================== */
+
+.modalBlock {
+  margin-top: 30px;
+}
+
+.modalBlock h3 {
+  margin: 0 0 15px;
+
+  color: #f4f6fb;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 20px;
+}
+
+/* =====================================================
+   POINTS
+===================================================== */
+
+.pointsGrid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.point {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 44px;
+
+  padding: 10px 12px;
+
+  border: 1px solid rgba(70, 130, 210, 0.13);
+
+  border-radius: 10px;
+
+  background: rgba(20, 50, 90, 0.16);
+
+  color: #a7bad4;
+
+  font-size: 13px;
+
+  transition: 0.25s ease;
+}
+
+.point:hover {
+  border-color: rgba(70, 160, 255, 0.35);
+
+  color: white;
+
+  transform: translateX(3px);
+}
+
+.checkIcon {
+  width: 21px;
+  height: 21px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(45, 210, 145, 0.1);
+
+  border: 1px solid rgba(45, 210, 145, 0.25);
+
+  color: #4ce1a8;
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   TECHNOLOGIES
+===================================================== */
+
+.technologyList {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+.technology {
+  padding: 8px 13px;
+
+  border: 1px solid rgba(70, 150, 255, 0.25);
+
+  border-radius: 50px;
+
+  background: rgba(30, 90, 170, 0.12);
+
+  color: #82baff;
+
+  font-size: 12px;
+
+  transition: 0.25s ease;
+}
+
+.technology:hover {
+  border-color: rgba(80, 180, 255, 0.6);
+
+  background: rgba(50, 130, 230, 0.18);
+
+  color: white;
+
+  box-shadow:
+    0 0 18px rgba(50, 150, 255, 0.12);
+}
+
+/* =====================================================
+   MODAL FOOTER
+===================================================== */
+
+.modalFooter {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 35px;
+
+  padding-top: 25px;
+
+  border-top: 1px solid rgba(100, 150, 220, 0.14);
+}
+
+.modalConversation {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 14px 22px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #367fff,
+      #bd3ddd
+    );
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px rgba(70, 90, 255, 0.22);
+
+  transition: 0.25s ease;
+}
+
+.modalConversation:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 40px rgba(80, 100, 255, 0.35);
+}
+
+.modalConversation span {
+  font-size: 18px;
+}
+
+.modalClose {
+  padding: 13px 20px;
+
+  border: 1px solid rgba(90, 140, 210, 0.3);
+
+  border-radius: 11px;
+
+  background: transparent;
+
+  color: #9fb1cb;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.modalClose:hover {
+  color: white;
+
+  border-color: rgba(90, 160, 255, 0.5);
+
+  background: rgba(60, 120, 220, 0.1);
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+  .container {
+    width: min(100% - 50px, 900px);
+  }
+
+  .sectionHeader {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .exploreText {
+    margin: 0;
+
+    max-width: 700px;
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+  .servicesSection {
+    padding: 80px 0 50px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .heading {
+    font-size: 50px;
+
+    letter-spacing: -2px;
+  }
+
+  .exploreText {
+    font-size: 16px;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard {
+    min-height: 360px;
+
+    padding: 27px;
+  }
+
+  .bottomCta {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 28px;
+  }
+
+  .startConversation {
+    width: 100%;
+  }
+
+  .modalBackdrop {
+    padding: 12px;
+  }
+
+  .modal {
+    padding: 30px 22px;
+
+    max-height: 94vh;
+
+    border-radius: 22px;
+  }
+
+  .modalTop {
+    align-items: flex-start;
+
+    gap: 14px;
+  }
+
+  .modalIcon {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 15px;
+
+    font-size: 24px;
+  }
+
+  .modalTop h2 {
+    font-size: 26px;
+  }
+
+  .guidanceBox p {
+    font-size: 15px;
+  }
+
+  .pointsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modalFooter {
+    flex-direction: column;
+  }
+
+  .modalConversation,
+  .modalClose {
+    width: 100%;
+  }
+}

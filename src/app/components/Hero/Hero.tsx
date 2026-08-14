@@ -139,8 +139,37 @@ export default function Hero() {
               </div>
             </div>
           </div>
+
+          {/* Floating AI card */}
+          <div
+            className={`${styles.visualCard} ${styles.floatingCard} ${styles.floatingCardAi}`}
+          >
+            <div className={styles.floatingIcon}>✦</div>
+
+            <div>
+              <strong>AI &amp; Automation</strong>
+              <span>Smarter decisions</span>
+            </div>
+          </div>
+
+          {/* Floating Cloud card */}
+          <div
+            className={`${styles.visualCard} ${styles.floatingCard} ${styles.floatingCardCloud}`}
+          >
+            <div className={styles.floatingIcon}>☁</div>
+
+            <div>
+              <strong>Cloud Solutions</strong>
+              <span>Built to scale</span>
+            </div>
+          </div>
+
+          <div className={styles.visualCircle}>
+            <span>AGIT</span>
+          </div>
         </div>
       </div>
+
       {/* Scroll indicator */}
       <div className={styles.heroScroll} aria-hidden="true">
         <span>SCROLL TO EXPLORE</span>
