@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import styles from "./navbar.module.css";
 
@@ -22,17 +22,16 @@ const navItems = [
   },
   {
     label: "About",
-    href: "/about",
+    href: "/#about",
   },
   {
     label: "Contact",
-    href: "/contact",
+    href: "/#contact",
   },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => {
@@ -40,42 +39,36 @@ export default function Navbar() {
   };
 
   return (
-    <header className={styles.header}>
-      <nav className={styles.navbar}>
-
-        {/* ================================
-            LOGO
-        ================================= */}
-
+    <header className={styles.navbar}>
+      <div className={styles.navContainer}>
         <Link
           href="/"
-          className={styles.logoBox}
+          className={styles.logo}
           onClick={closeMenu}
+          aria-label="Aastha Global IT Solutions home"
         >
-          <Image
-            src="/logo.png"
+          <img
+            src="/Aasthalogo.png"
             alt="Aastha Global IT Solutions"
-            width={120}
-            height={65}
-            priority
-            className={styles.logo}
+            className={styles.logoImage}
           />
         </Link>
 
-
-        {/* ================================
-            DESKTOP NAVIGATION
-        ================================= */}
-
-        <div className={styles.desktopNav}>
-
+        <nav
+          className={styles.desktopNav}
+          aria-label="Main navigation"
+        >
           {navItems.map((item) => {
             const isActive =
-              pathname === item.href;
+              item.href === "/"
+                ? pathname === "/"
+                : item.href === "/services"
+                  ? pathname === "/services"
+                  : false;
 
             return (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 className={`${styles.navLink} ${
                   isActive ? styles.active : ""
@@ -85,85 +78,58 @@ export default function Navbar() {
               </Link>
             );
           })}
-
-        </div>
-
-
-        {/* ================================
-            GET STARTED
-        ================================= */}
-
-        <Link
-          href="/contact"
-          className={styles.getStarted}
-        >
-          <span>Get Started</span>
-
-          <span className={styles.arrow}>
-            →
-          </span>
-        </Link>
-
-
-        {/* ================================
-            MOBILE MENU BUTTON
-        ================================= */}
+        </nav>
 
         <button
           type="button"
           className={styles.menuButton}
-          onClick={() =>
-            setMenuOpen((previous) => !previous)
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={
+            menuOpen
+              ? "Close navigation"
+              : "Open navigation"
           }
-          aria-label="Toggle navigation"
           aria-expanded={menuOpen}
         >
-          <span />
-          <span />
-          <span />
+          {menuOpen ? (
+            <X size={24} />
+          ) : (
+            <Menu size={24} />
+          )}
         </button>
+      </div>
 
-      </nav>
-
-
-      {/* ================================
-          MOBILE NAVIGATION
-      ================================= */}
-
-      {menuOpen && (
-        <div className={styles.mobileMenu}>
-
+      <div
+        className={`${styles.mobileMenu} ${
+          menuOpen ? styles.mobileMenuOpen : ""
+        }`}
+      >
+        <nav aria-label="Mobile navigation">
           {navItems.map((item) => {
             const isActive =
-              pathname === item.href;
+              item.href === "/"
+                ? pathname === "/"
+                : item.href === "/services"
+                  ? pathname === "/services"
+                  : false;
 
             return (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
-                onClick={closeMenu}
                 className={`${styles.mobileLink} ${
                   isActive
                     ? styles.mobileActive
                     : ""
                 }`}
+                onClick={closeMenu}
               >
                 {item.label}
               </Link>
             );
           })}
-
-          <Link
-            href="/contact"
-            onClick={closeMenu}
-            className={styles.mobileGetStarted}
-          >
-            Get Started →
-          </Link>
-
-        </div>
-      )}
-
+        </nav>
+      </div>
     </header>
   );
 }

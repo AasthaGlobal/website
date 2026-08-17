@@ -1,11 +1,14 @@
-import Navbar from "./components/Navbar/navbar";
 import Hero from "./components/Hero/hero";
+import Services from "./components/services/Services";
 
 export default function Home() {
   return (
-    <main className="home">
-      <Navbar />
+    <main>
       <Hero />
+
+      <Services />
+
+      {/* Other sections */}
     </main>
   );
 }
