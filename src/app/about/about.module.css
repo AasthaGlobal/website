@@ -1,0 +1,964 @@
+.aboutPage {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --surface: #f8fafc;
+  --white: #ffffff;
+
+  color: var(--text);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--primary);
+
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.sectionHeading {
+  max-width: 800px;
+  margin-bottom: 55px;
+}
+
+.sectionTitle {
+  margin: 16px 0 0;
+
+  font-size: clamp(40px, 4.5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  font-weight: 750;
+}
+
+.sectionDescription {
+  max-width: 720px;
+
+  margin: 20px 0 0;
+
+  color: var(--muted);
+
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+  position: relative;
+
+  padding: 120px 0 110px;
+
+  background: #f8fbff;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(37, 99, 235, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(37, 99, 235, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+
+  pointer-events: none;
+}
+
+.heroGrid {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 700px;
+}
+
+.heroContent h1 {
+  margin: 22px 0;
+
+  font-size: clamp(50px, 6vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+}
+
+.heroContent h1 span {
+  display: block;
+
+  color: var(--primary);
+}
+
+.heroContent > p {
+  max-width: 680px;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 16px;
+
+  margin-top: 38px;
+}
+
+.primaryButton,
+.secondaryButton,
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 56px;
+
+  padding: 0 26px;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.primaryButton {
+  color: white;
+  background: var(--primary);
+}
+
+.primaryButton:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  background: white;
+}
+
+.secondaryButton:hover {
+  color: var(--primary);
+
+  border-color: var(--primary);
+}
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.heroVisual {
+  min-height: 450px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagePlaceholder {
+  position: relative;
+
+  width: 100%;
+  max-width: 520px;
+
+  aspect-ratio: 1 / 0.85;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 26px;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(37, 99, 235, 0.15),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #eff6ff,
+      #ffffff
+    );
+
+  box-shadow:
+    0 30px 80px rgba(15, 23, 42, 0.1);
+}
+
+.imagePlaceholder::before,
+.imagePlaceholder::after {
+  content: "";
+
+  position: absolute;
+
+  border: 1px solid rgba(37, 99, 235, 0.12);
+
+  border-radius: 50%;
+}
+
+.imagePlaceholder::before {
+  width: 280px;
+  height: 280px;
+}
+
+.imagePlaceholder::after {
+  width: 195px;
+  height: 195px;
+}
+
+.placeholderContent {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20px;
+
+  text-align: center;
+}
+
+.placeholderIcon {
+  width: 100px;
+  height: 100px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 24px;
+
+  color: white;
+
+  background: var(--primary);
+
+  font-size: 32px;
+  font-weight: 800;
+
+  box-shadow:
+    0 18px 35px rgba(37, 99, 235, 0.25);
+}
+
+.placeholderContent span {
+  color: var(--muted);
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   INTRODUCTION
+===================================================== */
+
+.introduction {
+  padding: 120px 0;
+}
+
+.introductionGrid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 100px;
+
+  align-items: start;
+}
+
+.introductionContent {
+  padding-top: 5px;
+}
+
+.introductionContent p {
+  margin: 0 0 25px;
+
+  color: var(--muted);
+
+  font-size: 19px;
+  line-height: 1.85;
+}
+
+/* =====================================================
+   MISSION & VISION
+===================================================== */
+
+.missionVision {
+  padding: 120px 0;
+
+  background: var(--surface);
+}
+
+.missionGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 28px;
+}
+
+.missionCard {
+  position: relative;
+
+  padding: 46px;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 20px;
+
+  background: white;
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.05);
+}
+
+.visionCard {
+  border-color: var(--border);
+}
+
+.missionIcon {
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 30px;
+
+  border-radius: 14px;
+
+  color: var(--primary);
+
+  background: #eff6ff;
+
+  font-size: 25px;
+}
+
+.cardEyebrow {
+  color: var(--primary);
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.missionCard h3 {
+  margin: 16px 0;
+
+  font-size: 29px;
+  line-height: 1.3;
+}
+
+.missionCard p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* =====================================================
+   VALUES
+===================================================== */
+
+.values {
+  padding: 120px 0;
+}
+
+.valuesGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 28px;
+}
+
+.valueCard {
+  padding: 36px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 17px;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.valueNumber {
+  display: block;
+
+  margin-bottom: 35px;
+
+  color: var(--primary);
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.valueCard h3 {
+  margin: 0 0 14px;
+
+  font-size: 25px;
+  line-height: 1.3;
+}
+
+.valueCard p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* =====================================================
+   EXPERTISE
+===================================================== */
+
+.expertise {
+  padding: 120px 0;
+
+  background: var(--surface);
+}
+
+.highlightsGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+.highlightCard {
+  position: relative;
+
+  min-height: 320px;
+
+  padding: 34px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 17px;
+
+  background: white;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.highlightCard:hover {
+  transform: translateY(-5px);
+
+  border-color: #bfdbfe;
+
+  box-shadow:
+    0 20px 45px rgba(15, 23, 42, 0.07);
+}
+
+.highlightHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.highlightNumber {
+  color: #94a3b8;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.highlightIcon {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  color: var(--primary);
+
+  background: #eff6ff;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.highlightCard h3 {
+  margin: 38px 0 14px;
+
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.highlightCard p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.highlightLine {
+  position: absolute;
+
+  left: 34px;
+  bottom: 27px;
+
+  width: 40px;
+  height: 2px;
+
+  background: var(--primary);
+}
+
+/* =====================================================
+   APPROACH
+===================================================== */
+
+.approach {
+  padding: 120px 0;
+}
+
+.approachBox {
+  display: grid;
+
+  grid-template-columns: 1fr 0.8fr;
+
+  gap: 80px;
+
+  align-items: center;
+
+  padding: 70px;
+
+  border-radius: 24px;
+
+  color: white;
+
+  background: #0f172a;
+}
+
+.approachContent h2 {
+  margin: 20px 0;
+
+  font-size: clamp(42px, 5vw, 60px);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.04em;
+}
+
+.approachContent h2 span {
+  color: #60a5fa;
+}
+
+.approachContent p {
+  max-width: 580px;
+
+  margin: 0;
+
+  color: #cbd5e1;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+}
+
+.approachSteps {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
+}
+
+.approachStep {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+
+  padding: 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 13px;
+}
+
+.approachStep strong {
+  color: #60a5fa;
+
+  font-size: 13px;
+}
+
+.approachStep span {
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta {
+  padding: 0 0 120px;
+}
+
+.ctaBox {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 50px;
+
+  padding: 65px;
+
+  border-radius: 24px;
+
+  background: #eff6ff;
+}
+
+.ctaBox h2 {
+  margin: 16px 0;
+
+  font-size: clamp(38px, 4.5vw, 54px);
+
+  line-height: 1.1;
+
+  letter-spacing: -0.035em;
+}
+
+.ctaBox h2 span {
+  color: var(--primary);
+}
+
+.ctaBox p {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 18px;
+
+  line-height: 1.8;
+}
+
+.ctaButton {
+  flex-shrink: 0;
+
+  color: white;
+
+  background: var(--primary);
+}
+
+.ctaButton:hover {
+  background: var(--primary-dark);
+
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+  .heroContent {
+    max-width: 800px;
+  }
+
+  .heroVisual {
+    min-height: auto;
+  }
+
+  .introductionGrid {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .missionGrid,
+  .valuesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .highlightsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .approachBox {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .ctaBox {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 640px) {
+  .container {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .hero,
+  .introduction,
+  .missionVision,
+  .values,
+  .expertise,
+  .approach {
+    padding: 80px 0;
+  }
+
+  .hero {
+    padding-top: 75px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+
+    letter-spacing: 0.11em;
+  }
+
+  .heroContent h1 {
+    font-size: 46px;
+
+    line-height: 1.05;
+  }
+
+  .heroContent > p {
+    font-size: 17px;
+
+    line-height: 1.75;
+  }
+
+  .heroActions {
+    align-items: stretch;
+
+    flex-direction: column;
+
+    margin-top: 30px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .heroVisual {
+    display: none;
+  }
+
+  .sectionHeading {
+    margin-bottom: 38px;
+  }
+
+  .sectionTitle {
+    font-size: 38px;
+
+    line-height: 1.1;
+  }
+
+  .sectionDescription {
+    font-size: 17px;
+
+    line-height: 1.75;
+  }
+
+  .introductionContent p {
+    font-size: 17px;
+
+    line-height: 1.8;
+  }
+
+  .missionGrid,
+  .valuesGrid,
+  .highlightsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .missionCard {
+    padding: 32px;
+  }
+
+  .missionCard h3 {
+    font-size: 25px;
+  }
+
+  .missionCard p {
+    font-size: 16px;
+  }
+
+  .valueCard {
+    padding: 30px;
+  }
+
+  .valueCard h3 {
+    font-size: 23px;
+  }
+
+  .valueCard p {
+    font-size: 16px;
+  }
+
+  .highlightCard {
+    min-height: auto;
+
+    padding: 30px;
+  }
+
+  .highlightCard h3 {
+    font-size: 21px;
+  }
+
+  .highlightCard p {
+    font-size: 16px;
+  }
+
+  .approachBox {
+    padding: 40px 26px;
+
+    border-radius: 19px;
+  }
+
+  .approachContent h2 {
+    font-size: 42px;
+  }
+
+  .approachContent p {
+    font-size: 17px;
+  }
+
+  .approachSteps {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .approachStep {
+    padding: 22px;
+  }
+
+  .approachStep span {
+    font-size: 15px;
+  }
+
+  .cta {
+    padding-bottom: 80px;
+  }
+
+  .ctaBox {
+    padding: 40px 26px;
+
+    border-radius: 19px;
+  }
+
+  .ctaBox h2 {
+    font-size: 38px;
+  }
+
+  .ctaBox p {
+    font-size: 17px;
+  }
+
+  .ctaButton {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.ctaButton:focus-visible {
+  outline: 3px solid #93c5fd;
+
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton,
+  .ctaButton,
+  .valueCard,
+  .highlightCard {
+    transition: none;
+  }
+}
