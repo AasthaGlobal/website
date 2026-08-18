@@ -22,7 +22,7 @@ const navItems = [
   },
   {
     label: "About",
-    href: "/#about",
+    href: "/about",
   },
   {
     label: "Contact",
