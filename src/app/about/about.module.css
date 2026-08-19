@@ -1,142 +1,137 @@
 .aboutPage {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --surface: #f8fafc;
-  --white: #ffffff;
+  --bg: #050b18;
+  --bg-light: #081326;
+  --card: rgba(10, 23, 45, 0.78);
+  --border: rgba(120, 160, 220, 0.16);
+  --text: #f5f8ff;
+  --muted: #9aa9c2;
+  --blue: #19b8ff;
+  --purple: #8b5cf6;
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(25, 184, 255, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(139, 92, 246, 0.07),
+      transparent 30%
+    ),
+    var(--bg);
 
   color: var(--text);
-  background: var(--white);
   overflow: hidden;
 }
 
 .container {
-  width: min(1180px, calc(100% - 40px));
+  width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
 }
 
-/* =====================================================
-   COMMON
-===================================================== */
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  color: var(--primary);
-
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.sectionHeading {
-  max-width: 800px;
-  margin-bottom: 55px;
-}
-
-.sectionTitle {
-  margin: 16px 0 0;
-
-  font-size: clamp(40px, 4.5vw, 58px);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-  font-weight: 750;
-}
-
-.sectionDescription {
-  max-width: 720px;
-
-  margin: 20px 0 0;
-
-  color: var(--muted);
-
-  font-size: 19px;
-  line-height: 1.75;
-}
-
-/* =====================================================
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero {
   position: relative;
-
-  padding: 120px 0 110px;
-
-  background: #f8fbff;
+  min-height: 760px;
+  display: flex;
+  align-items: center;
+  padding: 110px 0;
+  overflow: hidden;
 }
 
 .heroBackground {
   position: absolute;
   inset: 0;
-
   background-image:
     linear-gradient(
-      rgba(37, 99, 235, 0.035) 1px,
+      rgba(25, 184, 255, 0.035) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(37, 99, 235, 0.035) 1px,
+      rgba(25, 184, 255, 0.035) 1px,
       transparent 1px
     );
-
-  background-size: 50px 50px;
-
+  background-size: 70px 70px;
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 90%
+  );
   pointer-events: none;
 }
 
 .heroGrid {
   position: relative;
+  z-index: 2;
 
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-
-  gap: 80px;
-
+  grid-template-columns: 1fr 1fr;
   align-items: center;
+  gap: 70px;
 }
 
 .heroContent {
-  max-width: 700px;
+  position: relative;
+  z-index: 5;
 }
 
-.heroContent h1 {
-  margin: 22px 0;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
 
-  font-size: clamp(50px, 6vw, 78px);
-  line-height: 1.02;
-  letter-spacing: -0.055em;
+  font-size: 13px;
   font-weight: 800;
+  letter-spacing: 0.18em;
+
+  color: var(--blue);
+  margin-bottom: 22px;
 }
 
-.heroContent h1 span {
-  display: block;
-
-  color: var(--primary);
-}
-
-.heroContent > p {
-  max-width: 680px;
+.hero h1 {
+  max-width: 720px;
 
   margin: 0;
 
-  color: var(--muted);
+  font-size: clamp(48px, 5.5vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
 
-  font-size: 20px;
+.hero h1 span {
+  display: block;
+
+  background: linear-gradient(
+    90deg,
+    #19b8ff,
+    #6d8cff,
+    #a46cff
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.heroContent > p {
+  max-width: 650px;
+
+  margin: 30px 0 0;
+
+  font-size: 19px;
   line-height: 1.8;
+
+  color: var(--muted);
 }
 
 .heroActions {
   display: flex;
   flex-wrap: wrap;
-
   gap: 16px;
 
   margin-top: 38px;
@@ -145,127 +140,228 @@
 .primaryButton,
 .secondaryButton,
 .ctaButton {
+  min-height: 54px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
 
-  min-height: 56px;
+  padding: 0 25px;
 
-  padding: 0 26px;
-
-  border-radius: 9px;
-
-  font-size: 16px;
-  font-weight: 700;
+  border-radius: 12px;
 
   text-decoration: none;
 
+  font-size: 15px;
+  font-weight: 700;
+
   transition:
-    transform 180ms ease,
-    background 180ms ease,
-    border-color 180ms ease;
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .primaryButton {
-  color: white;
-  background: var(--primary);
-}
+  color: #ffffff;
 
-.primaryButton:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
+  background: linear-gradient(
+    135deg,
+    #0ea5e9,
+    #6366f1
+  );
+
+  box-shadow:
+    0 12px 35px rgba(25, 184, 255, 0.2);
 }
 
 .secondaryButton {
   color: var(--text);
 
-  border: 1px solid var(--border);
+  border: 1px solid rgba(140, 170, 220, 0.25);
 
-  background: white;
+  background: rgba(255, 255, 255, 0.035);
 }
 
-.secondaryButton:hover {
-  color: var(--primary);
-
-  border-color: var(--primary);
+.primaryButton:hover,
+.secondaryButton:hover,
+.ctaButton:hover {
+  transform: translateY(-3px);
 }
 
-/* =====================================================
-   HERO VISUAL
-===================================================== */
+.primaryButton:hover {
+  box-shadow:
+    0 16px 45px rgba(25, 184, 255, 0.32);
+}
+
+/* =========================================================
+   HERO VISUAL + ORBITS
+========================================================= */
 
 .heroVisual {
-  min-height: 450px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.imagePlaceholder {
   position: relative;
 
-  width: 100%;
-  max-width: 520px;
-
-  aspect-ratio: 1 / 0.85;
+  min-height: 560px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #dbeafe;
-
-  border-radius: 26px;
-
-  background:
-    radial-gradient(
-      circle at 50% 40%,
-      rgba(37, 99, 235, 0.15),
-      transparent 45%
-    ),
-    linear-gradient(
-      135deg,
-      #eff6ff,
-      #ffffff
-    );
-
-  box-shadow:
-    0 30px 80px rgba(15, 23, 42, 0.1);
+  isolation: isolate;
 }
 
-.imagePlaceholder::before,
-.imagePlaceholder::after {
+/* Glow behind the orbit */
+.heroVisual::before {
   content: "";
 
   position: absolute;
 
-  border: 1px solid rgba(37, 99, 235, 0.12);
+  width: 470px;
+  height: 470px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
 
   border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(25, 184, 255, 0.13) 0%,
+    rgba(100, 90, 255, 0.08) 35%,
+    transparent 70%
+  );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+
+  z-index: -1;
 }
 
-.imagePlaceholder::before {
+/* Common orbit */
+.orbit {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* OUTER RING */
+.orbitLarge {
+  width: 540px;
+  height: 540px;
+
+  border: 2px solid rgba(25, 184, 255, 0.62);
+
+  box-shadow:
+    0 0 10px rgba(25, 184, 255, 0.55),
+    0 0 25px rgba(25, 184, 255, 0.32),
+    0 0 55px rgba(25, 184, 255, 0.16),
+    inset 0 0 20px rgba(25, 184, 255, 0.08);
+
+  animation:
+    orbitRotate 22s linear infinite;
+}
+
+/* MIDDLE RING */
+.orbitMedium {
+  width: 410px;
+  height: 410px;
+
+  border: 2px solid rgba(91, 117, 255, 0.72);
+
+  box-shadow:
+    0 0 10px rgba(91, 117, 255, 0.55),
+    0 0 25px rgba(91, 117, 255, 0.30),
+    0 0 50px rgba(91, 117, 255, 0.15),
+    inset 0 0 20px rgba(91, 117, 255, 0.08);
+
+  animation:
+    orbitRotateReverse 17s linear infinite;
+}
+
+/* INNER RING */
+.orbitSmall {
   width: 280px;
   height: 280px;
+
+  border: 2px solid rgba(157, 92, 255, 0.78);
+
+  box-shadow:
+    0 0 10px rgba(157, 92, 255, 0.62),
+    0 0 25px rgba(157, 92, 255, 0.36),
+    0 0 50px rgba(157, 92, 255, 0.18),
+    inset 0 0 20px rgba(157, 92, 255, 0.10);
+
+  animation:
+    orbitRotate 12s linear infinite;
 }
 
-.imagePlaceholder::after {
-  width: 195px;
-  height: 195px;
+@keyframes orbitRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes orbitRotateReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* =========================================================
+   IMAGE PLACEHOLDER
+========================================================= */
+
+.imagePlaceholder {
+  position: relative;
+  z-index: 3;
+
+  width: 300px;
+  height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 32px;
+
+  border: 1px solid rgba(100, 170, 255, 0.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 44, 80, 0.92),
+      rgba(8, 18, 38, 0.95)
+    );
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 0 50px rgba(25, 184, 255, 0.12);
+
+  backdrop-filter: blur(12px);
 }
 
 .placeholderContent {
-  position: relative;
-  z-index: 1;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 20px;
-
   text-align: center;
 }
 
@@ -273,132 +369,59 @@
   width: 100px;
   height: 100px;
 
-  display: grid;
-  place-items: center;
+  margin: 0 auto 22px;
 
-  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 28px;
+
+  font-size: 35px;
+  font-weight: 900;
 
   color: white;
 
-  background: var(--primary);
-
-  font-size: 32px;
-  font-weight: 800;
+  background:
+    linear-gradient(
+      135deg,
+      #0ea5e9,
+      #6366f1,
+      #9333ea
+    );
 
   box-shadow:
-    0 18px 35px rgba(37, 99, 235, 0.25);
+    0 0 40px rgba(25, 184, 255, 0.25);
 }
 
 .placeholderContent span {
-  color: var(--muted);
+  color: #b5c3d9;
 
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
 }
 
-/* =====================================================
-   INTRODUCTION
-===================================================== */
+/* =========================================================
+   SECTION HEADING
+========================================================= */
 
-.introduction {
-  padding: 120px 0;
+.sectionHeading {
+  max-width: 800px;
+  margin-bottom: 55px;
 }
 
-.introductionGrid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-
-  gap: 100px;
-
-  align-items: start;
-}
-
-.introductionContent {
-  padding-top: 5px;
-}
-
-.introductionContent p {
-  margin: 0 0 25px;
-
-  color: var(--muted);
-
-  font-size: 19px;
-  line-height: 1.85;
-}
-
-/* =====================================================
-   MISSION & VISION
-===================================================== */
-
-.missionVision {
-  padding: 120px 0;
-
-  background: var(--surface);
-}
-
-.missionGrid {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 28px;
-}
-
-.missionCard {
-  position: relative;
-
-  padding: 46px;
-
-  border: 1px solid #dbeafe;
-
-  border-radius: 20px;
-
-  background: white;
-
-  box-shadow:
-    0 20px 50px rgba(15, 23, 42, 0.05);
-}
-
-.visionCard {
-  border-color: var(--border);
-}
-
-.missionIcon {
-  width: 58px;
-  height: 58px;
-
-  display: grid;
-  place-items: center;
-
-  margin-bottom: 30px;
-
-  border-radius: 14px;
-
-  color: var(--primary);
-
-  background: #eff6ff;
-
-  font-size: 25px;
-}
-
-.cardEyebrow {
-  color: var(--primary);
-
-  font-size: 13px;
-  font-weight: 800;
-
-  letter-spacing: 0.12em;
-}
-
-.missionCard h3 {
-  margin: 16px 0;
-
-  font-size: 29px;
-  line-height: 1.3;
-}
-
-.missionCard p {
+.sectionTitle {
   margin: 0;
+
+  font-size: clamp(38px, 4vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.sectionDescription {
+  max-width: 720px;
+
+  margin: 22px 0 0;
 
   color: var(--muted);
 
@@ -406,9 +429,150 @@
   line-height: 1.8;
 }
 
-/* =====================================================
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.introduction {
+  padding: 120px 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.introductionGrid {
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 90px;
+
+  align-items: start;
+}
+
+.introductionContent p {
+  margin: 0 0 24px;
+
+  color: var(--muted);
+
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+/* =========================================================
+   MISSION & VISION
+========================================================= */
+
+.missionVision {
+  padding: 120px 0;
+
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(100, 80, 255, 0.06),
+      transparent 35%
+    );
+}
+
+.missionGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 25px;
+}
+
+.missionCard {
+  position: relative;
+
+  padding: 42px;
+
+  min-height: 330px;
+
+  border-radius: 24px;
+
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 34, 62, 0.9),
+      rgba(7, 18, 36, 0.8)
+    );
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.missionCard:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(25, 184, 255, 0.4);
+}
+
+.visionCard:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.missionIcon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 28px;
+
+  border-radius: 16px;
+
+  color: var(--blue);
+
+  background: rgba(25, 184, 255, 0.1);
+
+  font-size: 28px;
+}
+
+.visionCard .missionIcon {
+  color: #a78bfa;
+
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.cardEyebrow {
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  color: var(--blue);
+}
+
+.visionCard .cardEyebrow {
+  color: #a78bfa;
+}
+
+.missionCard h3 {
+  margin: 18px 0;
+
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.missionCard p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================================================
    VALUES
-===================================================== */
+========================================================= */
 
 .values {
   padding: 120px 0;
@@ -419,44 +583,40 @@
 
   grid-template-columns: repeat(3, 1fr);
 
-  gap: 28px;
+  gap: 24px;
 }
 
 .valueCard {
-  padding: 36px;
+  padding: 35px;
 
   border: 1px solid var(--border);
 
-  border-radius: 17px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.025);
 
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .valueCard:hover {
   transform: translateY(-5px);
 
-  box-shadow:
-    0 20px 45px rgba(15, 23, 42, 0.08);
+  border-color: rgba(25, 184, 255, 0.35);
 }
 
 .valueNumber {
-  display: block;
-
-  margin-bottom: 35px;
-
-  color: var(--primary);
+  color: var(--blue);
 
   font-size: 13px;
   font-weight: 800;
 }
 
 .valueCard h3 {
-  margin: 0 0 14px;
+  margin: 25px 0 12px;
 
-  font-size: 25px;
-  line-height: 1.3;
+  font-size: 27px;
 }
 
 .valueCard p {
@@ -464,18 +624,23 @@
 
   color: var(--muted);
 
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
-/* =====================================================
+/* =========================================================
    EXPERTISE
-===================================================== */
+========================================================= */
 
 .expertise {
   padding: 120px 0;
 
-  background: var(--surface);
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(25, 184, 255, 0.05),
+      transparent 30%
+    );
 }
 
 .highlightsGrid {
@@ -483,35 +648,37 @@
 
   grid-template-columns: repeat(3, 1fr);
 
-  gap: 24px;
+  gap: 22px;
 }
 
 .highlightCard {
   position: relative;
 
-  min-height: 320px;
+  min-height: 310px;
 
-  padding: 34px;
+  padding: 30px;
+
+  border-radius: 22px;
 
   border: 1px solid var(--border);
 
-  border-radius: 17px;
+  background: rgba(10, 24, 46, 0.72);
 
-  background: white;
+  overflow: hidden;
 
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .highlightCard:hover {
-  transform: translateY(-5px);
+  transform: translateY(-7px);
 
-  border-color: #bfdbfe;
+  border-color: rgba(25, 184, 255, 0.35);
 
   box-shadow:
-    0 20px 45px rgba(15, 23, 42, 0.07);
+    0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
 .highlightHeader {
@@ -519,34 +686,45 @@
 
   align-items: center;
   justify-content: space-between;
+
+  margin-bottom: 35px;
 }
 
 .highlightNumber {
-  color: #94a3b8;
+  color: rgba(255, 255, 255, 0.3);
 
   font-size: 13px;
-  font-weight: 800;
 }
 
 .highlightIcon {
-  width: 52px;
-  height: 52px;
+  width: 55px;
+  height: 55px;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  border-radius: 13px;
+  border-radius: 15px;
 
-  color: var(--primary);
+  color: var(--blue);
 
-  background: #eff6ff;
+  background: rgba(25, 184, 255, 0.09);
 
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 24px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.highlightCard:hover .highlightIcon {
+  transform: scale(1.08);
+
+  background: rgba(25, 184, 255, 0.16);
 }
 
 .highlightCard h3 {
-  margin: 38px 0 14px;
+  margin: 0 0 15px;
 
   font-size: 23px;
   line-height: 1.3;
@@ -557,25 +735,29 @@
 
   color: var(--muted);
 
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 .highlightLine {
   position: absolute;
 
-  left: 34px;
-  bottom: 27px;
+  left: 30px;
+  bottom: 25px;
 
-  width: 40px;
+  width: 45px;
   height: 2px;
 
-  background: var(--primary);
+  background: linear-gradient(
+    90deg,
+    var(--blue),
+    transparent
+  );
 }
 
-/* =====================================================
+/* =========================================================
    APPROACH
-===================================================== */
+========================================================= */
 
 .approach {
   padding: 120px 0;
@@ -584,44 +766,45 @@
 .approachBox {
   display: grid;
 
-  grid-template-columns: 1fr 0.8fr;
+  grid-template-columns: 1.2fr 0.8fr;
 
-  gap: 80px;
+  gap: 60px;
 
-  align-items: center;
+  padding: 65px;
 
-  padding: 70px;
+  border-radius: 30px;
 
-  border-radius: 24px;
+  border: 1px solid rgba(25, 184, 255, 0.16);
 
-  color: white;
-
-  background: #0f172a;
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(100, 80, 255, 0.1),
+      transparent 40%
+    ),
+    rgba(8, 21, 40, 0.8);
 }
 
 .approachContent h2 {
-  margin: 20px 0;
+  margin: 0;
 
-  font-size: clamp(42px, 5vw, 60px);
+  font-size: clamp(42px, 5vw, 65px);
 
   line-height: 1.05;
-
-  letter-spacing: -0.04em;
 }
 
 .approachContent h2 span {
-  color: #60a5fa;
+  color: var(--blue);
 }
 
 .approachContent p {
-  max-width: 580px;
+  max-width: 650px;
 
-  margin: 0;
+  margin-top: 25px;
 
-  color: #cbd5e1;
+  color: var(--muted);
 
-  font-size: 18px;
-
+  font-size: 17px;
   line-height: 1.8;
 }
 
@@ -630,41 +813,42 @@
 
   grid-template-columns: repeat(2, 1fr);
 
-  gap: 14px;
+  gap: 15px;
 }
 
 .approachStep {
+  min-height: 150px;
+
+  padding: 25px;
+
   display: flex;
-
   flex-direction: column;
+  justify-content: space-between;
 
-  gap: 13px;
+  border: 1px solid var(--border);
 
-  padding: 28px;
+  border-radius: 18px;
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .approachStep strong {
-  color: #60a5fa;
+  color: var(--blue);
 
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .approachStep span {
-  font-size: 17px;
-
+  font-size: 20px;
   font-weight: 700;
 }
 
-/* =====================================================
+/* =========================================================
    CTA
-===================================================== */
+========================================================= */
 
 .cta {
-  padding: 0 0 120px;
+  padding: 100px 0 130px;
 }
 
 .ctaBox {
@@ -673,39 +857,49 @@
   align-items: center;
   justify-content: space-between;
 
-  gap: 50px;
+  gap: 40px;
 
   padding: 65px;
 
-  border-radius: 24px;
+  border-radius: 30px;
 
-  background: #eff6ff;
+  border: 1px solid rgba(25, 184, 255, 0.2);
+
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(139, 92, 246, 0.16),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(25, 184, 255, 0.12),
+      transparent 35%
+    ),
+    #081426;
 }
 
 .ctaBox h2 {
-  margin: 16px 0;
+  margin: 0;
 
-  font-size: clamp(38px, 4.5vw, 54px);
+  font-size: clamp(38px, 4vw, 58px);
 
-  line-height: 1.1;
-
-  letter-spacing: -0.035em;
+  line-height: 1.05;
 }
 
 .ctaBox h2 span {
-  color: var(--primary);
+  color: var(--blue);
 }
 
 .ctaBox p {
-  max-width: 650px;
+  max-width: 700px;
 
-  margin: 0;
+  margin: 20px 0 0;
 
   color: var(--muted);
 
-  font-size: 18px;
-
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 1.75;
 }
 
 .ctaButton {
@@ -713,38 +907,30 @@
 
   color: white;
 
-  background: var(--primary);
+  background: linear-gradient(
+    135deg,
+    #0ea5e9,
+    #6366f1
+  );
 }
 
-.ctaButton:hover {
-  background: var(--primary-dark);
-
-  transform: translateY(-2px);
-}
-
-/* =====================================================
+/* =========================================================
    TABLET
-===================================================== */
+========================================================= */
 
-@media (max-width: 900px) {
-  .heroGrid {
+@media (max-width: 1000px) {
+  .heroGrid,
+  .introductionGrid,
+  .approachBox {
     grid-template-columns: 1fr;
-
-    gap: 60px;
   }
 
-  .heroContent {
-    max-width: 800px;
+  .hero {
+    padding: 90px 0;
   }
 
   .heroVisual {
-    min-height: auto;
-  }
-
-  .introductionGrid {
-    grid-template-columns: 1fr;
-
-    gap: 40px;
+    min-height: 500px;
   }
 
   .missionGrid,
@@ -756,29 +942,75 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .approachBox {
-    grid-template-columns: 1fr;
-
-    gap: 50px;
-  }
-
   .ctaBox {
-    align-items: flex-start;
-
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-/* =====================================================
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .container {
-    width: min(100% - 32px, 1180px);
+    width: min(100% - 32px, 600px);
   }
 
-  .hero,
+  .hero {
+    min-height: auto;
+
+    padding: 75px 0 70px;
+  }
+
+  .heroGrid {
+    gap: 35px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .heroContent > p {
+    font-size: 17px;
+  }
+
+  .heroVisual {
+    min-height: 420px;
+  }
+
+  .orbitLarge {
+    width: 390px;
+    height: 390px;
+  }
+
+  .orbitMedium {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orbitSmall {
+    width: 215px;
+    height: 215px;
+  }
+
+  .heroVisual::before {
+    width: 350px;
+    height: 350px;
+  }
+
+  .imagePlaceholder {
+    width: 245px;
+    height: 245px;
+  }
+
+  .placeholderIcon {
+    width: 75px;
+    height: 75px;
+
+    font-size: 27px;
+  }
+
   .introduction,
   .missionVision,
   .values,
@@ -787,65 +1019,8 @@
     padding: 80px 0;
   }
 
-  .hero {
-    padding-top: 75px;
-  }
-
-  .eyebrow {
-    font-size: 12px;
-
-    letter-spacing: 0.11em;
-  }
-
-  .heroContent h1 {
-    font-size: 46px;
-
-    line-height: 1.05;
-  }
-
-  .heroContent > p {
-    font-size: 17px;
-
-    line-height: 1.75;
-  }
-
-  .heroActions {
-    align-items: stretch;
-
-    flex-direction: column;
-
-    margin-top: 30px;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    width: 100%;
-  }
-
-  .heroVisual {
-    display: none;
-  }
-
-  .sectionHeading {
-    margin-bottom: 38px;
-  }
-
-  .sectionTitle {
-    font-size: 38px;
-
-    line-height: 1.1;
-  }
-
-  .sectionDescription {
-    font-size: 17px;
-
-    line-height: 1.75;
-  }
-
-  .introductionContent p {
-    font-size: 17px;
-
-    line-height: 1.8;
+  .introductionGrid {
+    gap: 35px;
   }
 
   .missionGrid,
@@ -854,111 +1029,133 @@
     grid-template-columns: 1fr;
   }
 
+  .sectionHeading {
+    margin-bottom: 38px;
+  }
+
+  .sectionTitle {
+    font-size: 38px;
+  }
+
   .missionCard {
-    padding: 32px;
+    padding: 30px;
   }
 
   .missionCard h3 {
-    font-size: 25px;
-  }
-
-  .missionCard p {
-    font-size: 16px;
-  }
-
-  .valueCard {
-    padding: 30px;
-  }
-
-  .valueCard h3 {
-    font-size: 23px;
-  }
-
-  .valueCard p {
-    font-size: 16px;
-  }
-
-  .highlightCard {
-    min-height: auto;
-
-    padding: 30px;
-  }
-
-  .highlightCard h3 {
-    font-size: 21px;
-  }
-
-  .highlightCard p {
-    font-size: 16px;
+    font-size: 26px;
   }
 
   .approachBox {
-    padding: 40px 26px;
-
-    border-radius: 19px;
+    padding: 35px 25px;
   }
 
   .approachContent h2 {
-    font-size: 42px;
-  }
-
-  .approachContent p {
-    font-size: 17px;
+    font-size: 43px;
   }
 
   .approachSteps {
     grid-template-columns: 1fr 1fr;
   }
 
-  .approachStep {
-    padding: 22px;
-  }
-
-  .approachStep span {
-    font-size: 15px;
-  }
-
   .cta {
-    padding-bottom: 80px;
+    padding: 70px 0 90px;
   }
 
   .ctaBox {
-    padding: 40px 26px;
-
-    border-radius: 19px;
+    padding: 35px 25px;
   }
 
   .ctaBox h2 {
-    font-size: 38px;
+    font-size: 40px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 40px;
   }
 
-  .ctaBox p {
-    font-size: 17px;
+  .heroActions {
+    flex-direction: column;
   }
 
-  .ctaButton {
+  .primaryButton,
+  .secondaryButton {
     width: 100%;
   }
+
+  .heroVisual {
+    min-height: 350px;
+  }
+
+  .orbitLarge {
+    width: 320px;
+    height: 320px;
+  }
+
+  .orbitMedium {
+    width: 245px;
+    height: 245px;
+  }
+
+  .orbitSmall {
+    width: 175px;
+    height: 175px;
+  }
+
+  .heroVisual::before {
+    width: 280px;
+    height: 280px;
+  }
+
+  .imagePlaceholder {
+    width: 205px;
+    height: 205px;
+  }
+
+  .placeholderIcon {
+    width: 65px;
+    height: 65px;
+
+    margin-bottom: 15px;
+
+    font-size: 23px;
+  }
+
+  .placeholderContent span {
+    font-size: 11px;
+  }
+
+  .approachSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .approachStep {
+    min-height: 110px;
+  }
 }
 
-/* =====================================================
+/* =========================================================
    ACCESSIBILITY
-===================================================== */
-
-.primaryButton:focus-visible,
-.secondaryButton:focus-visible,
-.ctaButton:focus-visible {
-  outline: 3px solid #93c5fd;
-
-  outline-offset: 3px;
-}
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  .orbitLarge,
+  .orbitMedium,
+  .orbitSmall {
+    animation: none;
+  }
+
   .primaryButton,
   .secondaryButton,
   .ctaButton,
-  .valueCard,
-  .highlightCard {
+  .highlightCard,
+  .missionCard,
+  .valueCard {
     transition: none;
   }
 }

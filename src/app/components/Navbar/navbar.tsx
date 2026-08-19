@@ -41,6 +41,8 @@ export default function Navbar() {
   return (
     <header className={styles.navbar}>
       <div className={styles.navContainer}>
+
+        {/* LOGO */}
         <Link
           href="/"
           className={styles.logo}
@@ -54,6 +56,7 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* DESKTOP NAVIGATION */}
         <nav
           className={styles.desktopNav}
           aria-label="Main navigation"
@@ -64,22 +67,48 @@ export default function Navbar() {
                 ? pathname === "/"
                 : item.href === "/services"
                   ? pathname === "/services"
-                  : false;
+                  : item.href === "/industries"
+                    ? pathname === "/industries"
+                    : item.href === "/about"
+                      ? pathname === "/about"
+                      : false;
+
+            const isContact = item.label === "Contact";
 
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`${styles.navLink} ${
-                  isActive ? styles.active : ""
-                }`}
+                className={
+                  isContact
+                    ? `${styles.contactButton} ${
+                        isActive ? styles.contactActive : ""
+                      }`
+                    : `${styles.navLink} ${
+                        isActive ? styles.active : ""
+                      }`
+                }
               >
-                {item.label}
+                {isContact ? (
+                  <>
+                    <span>Contact Us</span>
+
+                    <span
+                      className={styles.contactArrow}
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </>
+                ) : (
+                  <span>{item.label}</span>
+                )}
               </Link>
             );
           })}
         </nav>
 
+        {/* MOBILE MENU BUTTON */}
         <button
           type="button"
           className={styles.menuButton}
@@ -99,6 +128,7 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* MOBILE MENU */}
       <div
         className={`${styles.mobileMenu} ${
           menuOpen ? styles.mobileMenuOpen : ""
@@ -111,20 +141,47 @@ export default function Navbar() {
                 ? pathname === "/"
                 : item.href === "/services"
                   ? pathname === "/services"
-                  : false;
+                  : item.href === "/industries"
+                    ? pathname === "/industries"
+                    : item.href === "/about"
+                      ? pathname === "/about"
+                      : false;
+
+            const isContact = item.label === "Contact";
 
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`${styles.mobileLink} ${
-                  isActive
-                    ? styles.mobileActive
-                    : ""
-                }`}
+                className={
+                  isContact
+                    ? `${styles.mobileContactButton} ${
+                        isActive
+                          ? styles.mobileContactActive
+                          : ""
+                      }`
+                    : `${styles.mobileLink} ${
+                        isActive
+                          ? styles.mobileActive
+                          : ""
+                      }`
+                }
                 onClick={closeMenu}
               >
-                {item.label}
+                {isContact ? (
+                  <>
+                    <span>Contact Us</span>
+
+                    <span
+                      className={styles.contactArrow}
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </>
+                ) : (
+                  item.label
+                )}
               </Link>
             );
           })}
