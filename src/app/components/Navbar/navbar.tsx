@@ -26,7 +26,7 @@ const navItems = [
   },
   {
     label: "Contact",
-    href: "/#contact",
+    href: "/contact",
   },
 ];
 
@@ -38,11 +38,28 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  /*
+   * Checks whether the current page matches
+   * the navigation item's route.
+   */
+  const isActiveRoute = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return (
+      pathname === href ||
+      pathname.startsWith(`${href}/`)
+    );
+  };
+
   return (
     <header className={styles.navbar}>
       <div className={styles.navContainer}>
 
-        {/* LOGO */}
+        {/* =========================
+            LOGO
+        ========================== */}
         <Link
           href="/"
           className={styles.logo}
@@ -56,23 +73,15 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
+        {/* =========================
+            DESKTOP NAVIGATION
+        ========================== */}
         <nav
           className={styles.desktopNav}
           aria-label="Main navigation"
         >
           {navItems.map((item) => {
-            const isActive =
-              item.href === "/"
-                ? pathname === "/"
-                : item.href === "/services"
-                  ? pathname === "/services"
-                  : item.href === "/industries"
-                    ? pathname === "/industries"
-                    : item.href === "/about"
-                      ? pathname === "/about"
-                      : false;
-
+            const isActive = isActiveRoute(item.href);
             const isContact = item.label === "Contact";
 
             return (
@@ -82,12 +91,17 @@ export default function Navbar() {
                 className={
                   isContact
                     ? `${styles.contactButton} ${
-                        isActive ? styles.contactActive : ""
+                        isActive
+                          ? styles.contactActive
+                          : ""
                       }`
                     : `${styles.navLink} ${
-                        isActive ? styles.active : ""
+                        isActive
+                          ? styles.active
+                          : ""
                       }`
                 }
+                onClick={closeMenu}
               >
                 {isContact ? (
                   <>
@@ -108,45 +122,45 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* MOBILE MENU BUTTON */}
+        {/* =========================
+            MOBILE MENU BUTTON
+        ========================== */}
         <button
           type="button"
           className={styles.menuButton}
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() =>
+            setMenuOpen((open) => !open)
+          }
           aria-label={
             menuOpen
               ? "Close navigation"
               : "Open navigation"
           }
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
           {menuOpen ? (
-            <X size={24} />
+            <X size={24} aria-hidden="true" />
           ) : (
-            <Menu size={24} />
+            <Menu size={24} aria-hidden="true" />
           )}
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* =========================
+          MOBILE MENU
+      ========================== */}
       <div
+        id="mobile-navigation"
         className={`${styles.mobileMenu} ${
-          menuOpen ? styles.mobileMenuOpen : ""
+          menuOpen
+            ? styles.mobileMenuOpen
+            : ""
         }`}
       >
         <nav aria-label="Mobile navigation">
           {navItems.map((item) => {
-            const isActive =
-              item.href === "/"
-                ? pathname === "/"
-                : item.href === "/services"
-                  ? pathname === "/services"
-                  : item.href === "/industries"
-                    ? pathname === "/industries"
-                    : item.href === "/about"
-                      ? pathname === "/about"
-                      : false;
-
+            const isActive = isActiveRoute(item.href);
             const isContact = item.label === "Contact";
 
             return (
@@ -180,7 +194,7 @@ export default function Navbar() {
                     </span>
                   </>
                 ) : (
-                  item.label
+                  <span>{item.label}</span>
                 )}
               </Link>
             );
