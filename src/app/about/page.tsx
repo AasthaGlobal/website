@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./about.module.css";
+import WhyChooseUs from "../components/WhyChooseUs/WhyChooseUs";
 
 type Highlight = {
   number: string;
@@ -10,42 +11,42 @@ type Highlight = {
 
 const highlights: Highlight[] = [
   {
-    number: "01",
+    number: "",
     icon: "☁",
     title: "Cloud & AI Consulting",
     description:
       "Helping businesses leverage cloud computing and artificial intelligence to improve scalability, automation, efficiency, and decision-making.",
   },
   {
-    number: "02",
+    number: "",
     icon: "</>",
     title: "Enterprise Application Development",
     description:
       "Building secure, scalable, and high-performance applications designed around complex business requirements.",
   },
   {
-    number: "03",
+    number: "",
     icon: "⚙",
     title: "DevOps & Automation",
     description:
       "Modernizing development and deployment with automation, CI/CD, monitoring, and DevOps best practices.",
   },
   {
-    number: "04",
+    number: "",
     icon: "◈",
     title: "Web & Mobile Solutions",
     description:
       "Creating modern, responsive, accessible, and engaging digital experiences across web and mobile platforms.",
   },
   {
-    number: "05",
+    number: "",
     icon: "✦",
     title: "Customer-first Approach",
     description:
       "Putting your business objectives first and building technology solutions around your goals, challenges, and long-term growth.",
   },
   {
-    number: "06",
+    number: "",
     icon: "◎",
     title: "Global Delivery Model",
     description:
@@ -111,7 +112,10 @@ function HighlightCard({ item }: { item: Highlight }) {
 
       <p>{item.description}</p>
 
-      <span className={styles.highlightLine} aria-hidden="true" />
+      <span
+        className={styles.highlightLine}
+        aria-hidden="true"
+      />
     </article>
   );
 }
@@ -131,7 +135,10 @@ function MissionVisionCard({
         type === "vision" ? styles.visionCard : ""
       }`}
     >
-      <div className={styles.missionIcon} aria-hidden="true">
+      <div
+        className={styles.missionIcon}
+        aria-hidden="true"
+      >
         {type === "mission" ? "◎" : "◉"}
       </div>
 
@@ -149,12 +156,17 @@ function MissionVisionCard({
 export default function AboutPage() {
   return (
     <main className={styles.aboutPage}>
+
       {/* HERO */}
       <section className={styles.hero}>
-        <div className={styles.heroBackground} aria-hidden="true" />
+        <div
+          className={styles.heroBackground}
+          aria-hidden="true"
+        />
 
         <div className={styles.container}>
           <div className={styles.heroGrid}>
+
             <div className={styles.heroContent}>
               <span className={styles.eyebrow}>
                 ABOUT AASTHA GLOBAL IT SOLUTIONS
@@ -191,17 +203,38 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Image / Illustration Placeholder */}
+            {/* HERO VISUAL WITH BRIGHT ORBITS */}
             <div className={styles.heroVisual}>
+
+              <div
+                className={`${styles.orbit} ${styles.orbitLarge}`}
+                aria-hidden="true"
+              />
+
+              <div
+                className={`${styles.orbit} ${styles.orbitMedium}`}
+                aria-hidden="true"
+              />
+
+              <div
+                className={`${styles.orbit} ${styles.orbitSmall}`}
+                aria-hidden="true"
+              />
+
               <div className={styles.imagePlaceholder}>
                 <div className={styles.placeholderContent}>
+
                   <div className={styles.placeholderIcon}>
                     AG
                   </div>
 
-                  <span>Technology. Innovation. Growth.</span>
+                  <span>
+                    Technology. Innovation. Growth.
+                  </span>
+
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -211,6 +244,7 @@ export default function AboutPage() {
       <section className={styles.introduction}>
         <div className={styles.container}>
           <div className={styles.introductionGrid}>
+
             <div>
               <SectionHeading
                 eyebrow="WHO WE ARE"
@@ -240,6 +274,7 @@ export default function AboutPage() {
                 capabilities.
               </p>
             </div>
+
           </div>
         </div>
       </section>
@@ -247,6 +282,7 @@ export default function AboutPage() {
       {/* MISSION & VISION */}
       <section className={styles.missionVision}>
         <div className={styles.container}>
+
           <SectionHeading
             eyebrow="OUR PURPOSE"
             title="Driven by purpose. Focused on impact."
@@ -254,6 +290,7 @@ export default function AboutPage() {
           />
 
           <div className={styles.missionGrid}>
+
             <MissionVisionCard
               type="mission"
               title="Empowering businesses through innovative technology."
@@ -265,6 +302,7 @@ export default function AboutPage() {
               title="Becoming a globally trusted technology partner."
               description="To become a globally trusted technology partner known for delivering world-class digital transformation solutions."
             />
+
           </div>
         </div>
       </section>
@@ -272,12 +310,14 @@ export default function AboutPage() {
       {/* VALUES */}
       <section className={styles.values}>
         <div className={styles.container}>
+
           <SectionHeading
             eyebrow="OUR VALUES"
             title="Principles that shape our work."
           />
 
           <div className={styles.valuesGrid}>
+
             {values.map((value, index) => (
               <article
                 key={value.title}
@@ -292,6 +332,7 @@ export default function AboutPage() {
                 <p>{value.description}</p>
               </article>
             ))}
+
           </div>
         </div>
       </section>
@@ -302,6 +343,7 @@ export default function AboutPage() {
         className={styles.expertise}
       >
         <div className={styles.container}>
+
           <SectionHeading
             eyebrow="OUR EXPERTISE"
             title="Technology capabilities built for real-world impact."
@@ -309,12 +351,14 @@ export default function AboutPage() {
           />
 
           <div className={styles.highlightsGrid}>
+
             {highlights.map((item) => (
               <HighlightCard
                 key={item.title}
                 item={item}
               />
             ))}
+
           </div>
         </div>
       </section>
@@ -322,7 +366,9 @@ export default function AboutPage() {
       {/* APPROACH */}
       <section className={styles.approach}>
         <div className={styles.container}>
+
           <div className={styles.approachBox}>
+
             <div className={styles.approachContent}>
               <span className={styles.eyebrow}>
                 OUR APPROACH
@@ -345,6 +391,7 @@ export default function AboutPage() {
             </div>
 
             <div className={styles.approachSteps}>
+
               {[
                 ["01", "Understand"],
                 ["02", "Innovate"],
@@ -359,15 +406,21 @@ export default function AboutPage() {
                   <span>{label}</span>
                 </div>
               ))}
+
             </div>
           </div>
         </div>
       </section>
 
+      {/* WHY CHOOSE US */}
+      <WhyChooseUs />
+
       {/* CTA */}
       <section className={styles.cta}>
         <div className={styles.container}>
+
           <div className={styles.ctaBox}>
+
             <div>
               <span className={styles.eyebrow}>
                 LET&apos;S BUILD THE FUTURE
@@ -392,9 +445,11 @@ export default function AboutPage() {
               Talk to Our Team
               <span aria-hidden="true">→</span>
             </Link>
+
           </div>
         </div>
       </section>
+
     </main>
   );
 }
