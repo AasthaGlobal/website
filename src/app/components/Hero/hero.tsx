@@ -5,17 +5,14 @@ export default function Hero() {
     <section className={styles.hero} aria-labelledby="hero-title">
       {/* Background effects */}
       <div className={styles.heroGrid} aria-hidden="true" />
-
       <div
         className={`${styles.heroGlow} ${styles.heroGlowBlue}`}
         aria-hidden="true"
       />
-
       <div
         className={`${styles.heroGlow} ${styles.heroGlowPurple}`}
         aria-hidden="true"
       />
-
       <div
         className={`${styles.heroGlow} ${styles.heroGlowPink}`}
         aria-hidden="true"
@@ -24,22 +21,9 @@ export default function Hero() {
       <div className={styles.heroContainer}>
         {/* LEFT SIDE */}
         <div className={styles.heroContent}>
-
-          {/* COMPANY BRAND */}
           <div className={styles.heroEyebrow}>
-            <span className={styles.eyebrowGlow} />
-
             <span className={styles.eyebrowDot} />
-
-            <span className={styles.eyebrowText}>
-              AASTHA GLOBAL
-            </span>
-
-            <span className={styles.eyebrowDivider} />
-
-            <span className={styles.eyebrowHighlight}>
-              IT SOLUTIONS
-            </span>
+            <span>Aastha Global IT Solutions</span>
           </div>
 
           <h1 id="hero-title" className={styles.heroTitle}>
@@ -60,7 +44,6 @@ export default function Hero() {
           <div className={styles.heroActions}>
             <a href="/contact" className={styles.heroPrimaryButton}>
               <span>Get Started</span>
-
               <span className={styles.buttonArrow} aria-hidden="true">
                 →
               </span>
@@ -95,7 +78,6 @@ export default function Hero() {
           <div
             className={`${styles.visualOrbit} ${styles.visualOrbitOne}`}
           />
-
           <div
             className={`${styles.visualOrbit} ${styles.visualOrbitTwo}`}
           />
@@ -123,11 +105,9 @@ export default function Hero() {
               <div
                 className={`${styles.chartLine} ${styles.chartLineOne}`}
               />
-
               <div
                 className={`${styles.chartLine} ${styles.chartLineTwo}`}
               />
-
               <div
                 className={`${styles.chartLine} ${styles.chartLineThree}`}
               />
@@ -158,6 +138,34 @@ export default function Hero() {
                 <span>Support</span>
               </div>
             </div>
+          </div>
+
+          {/* Floating AI card */}
+          <div
+            className={`${styles.visualCard} ${styles.floatingCard} ${styles.floatingCardAi}`}
+          >
+            <div className={styles.floatingIcon}>✦</div>
+
+            <div>
+              <strong>AI &amp; Automation</strong>
+              <span>Smarter decisions</span>
+            </div>
+          </div>
+
+          {/* Floating Cloud card */}
+          <div
+            className={`${styles.visualCard} ${styles.floatingCard} ${styles.floatingCardCloud}`}
+          >
+            <div className={styles.floatingIcon}>☁</div>
+
+            <div>
+              <strong>Cloud Solutions</strong>
+              <span>Built to scale</span>
+            </div>
+          </div>
+
+          <div className={styles.visualCircle}>
+            <span>AGIT</span>
           </div>
         </div>
       </div>
