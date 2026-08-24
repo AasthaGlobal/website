@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./service.module.css";
 
@@ -31,7 +32,6 @@ const services: Service[] = [
     ],
     technologies: ["AWS", "Azure", "GCP", "Docker", "Kubernetes"],
   },
-
   {
     number: "02",
     icon: "✦",
@@ -49,7 +49,6 @@ const services: Service[] = [
     ],
     technologies: ["AI", "Machine Learning", "LLMs", "Automation", "APIs"],
   },
-
   {
     number: "03",
     icon: "◎",
@@ -67,7 +66,6 @@ const services: Service[] = [
     ],
     technologies: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL"],
   },
-
   {
     number: "04",
     icon: "▣",
@@ -85,7 +83,6 @@ const services: Service[] = [
     ],
     technologies: ["React Native", "Flutter", "Android", "iOS", "REST APIs"],
   },
-
   {
     number: "05",
     icon: "◉",
@@ -103,7 +100,6 @@ const services: Service[] = [
     ],
     technologies: ["Figma", "UX Research", "Prototyping", "Design Systems"],
   },
-
   {
     number: "06",
     icon: "⌘",
@@ -127,7 +123,6 @@ const services: Service[] = [
       "Jenkins",
     ],
   },
-
   {
     number: "07",
     icon: "◌",
@@ -135,7 +130,7 @@ const services: Service[] = [
     description:
       "Infrastructure monitoring, cloud operations and ongoing technical support.",
     guidance:
-      "Our managed IT services help businesses keep their technology reliable and available. We provide ongoing monitoring, maintenance and technical support so your team can focus on your core business.",
+      "Our managed IT services help businesses keep their technology reliable and available. We provide ongoing monitoring, maintenance and technical support so your team can focus on their core business.",
     points: [
       "Infrastructure monitoring",
       "Cloud operations",
@@ -151,7 +146,6 @@ const services: Service[] = [
       "Monitoring",
     ],
   },
-
   {
     number: "08",
     icon: "◈",
@@ -169,7 +163,6 @@ const services: Service[] = [
     ],
     technologies: ["Power BI", "SQL", "Python", "ETL", "Data Warehousing"],
   },
-
   {
     number: "09",
     icon: "◇",
@@ -193,7 +186,6 @@ const services: Service[] = [
       "Security Monitoring",
     ],
   },
-
   {
     number: "10",
     icon: "⬡",
@@ -214,54 +206,42 @@ const services: Service[] = [
 ];
 
 export default function Services() {
+  const router = useRouter();
   const [activeService, setActiveService] = useState<Service | null>(null);
 
   const handleLearnMore = (service: Service) => {
     setActiveService(service);
-
-    // Prevent background page scrolling while popup is open
-    document.body.style.overflow = "hidden";
   };
 
   const handleClose = () => {
     setActiveService(null);
-
-    document.body.style.overflow = "";
   };
 
   const handleConversation = () => {
     handleClose();
-
-    // Change this to your actual contact route if required
-    setTimeout(() => {
-      window.location.href = "/contact";
-    }, 100);
+    router.push("/contact");
   };
 
   return (
-    <main className={styles.servicesPage}>
-      <section className={styles.servicesSection}>
+    <section
+      className={styles.servicesPage}
+      aria-labelledby="services-title"
+    >
+      <div className={styles.servicesSection}>
         <div className={styles.container}>
-
-          {/* =========================================
-              HEADER
-          ========================================= */}
-
           <div className={styles.sectionHeader}>
             <div className={styles.headingArea}>
               <div className={styles.eyebrow}>
-                <span className={styles.eyebrowDot}></span>
-
+                <span className={styles.eyebrowDot} aria-hidden="true" />
                 OUR EXPERTISE
-
-                <span className={styles.eyebrowDot}></span>
+                <span className={styles.eyebrowDot} aria-hidden="true" />
               </div>
 
-              <h1 className={styles.heading}>
+              <h2 id="services-title" className={styles.heading}>
                 Solutions built for
                 <br />
                 <span>what&apos;s next.</span>
-              </h1>
+              </h2>
             </div>
 
             <p className={styles.exploreText}>
@@ -269,10 +249,6 @@ export default function Services() {
               help you build, scale and transform your business.
             </p>
           </div>
-
-          {/* =========================================
-              SERVICES GRID
-          ========================================= */}
 
           <div className={styles.servicesGrid}>
             {services.map((service) => (
@@ -284,23 +260,16 @@ export default function Services() {
                   {service.number}
                 </div>
 
-                {/* ICON */}
-
-                <div className={styles.iconBox}>
+                <div className={styles.iconBox} aria-hidden="true">
                   <span className={styles.serviceIcon}>
                     {service.icon}
                   </span>
                 </div>
 
-                {/* CONTENT */}
-
                 <div className={styles.cardContent}>
-                  <h2>{service.title}</h2>
-
+                  <h3>{service.title}</h3>
                   <p>{service.description}</p>
                 </div>
-
-                {/* LEARN MORE */}
 
                 <button
                   type="button"
@@ -309,17 +278,16 @@ export default function Services() {
                 >
                   <span>Learn More</span>
 
-                  <span className={styles.learnArrow}>
+                  <span
+                    className={styles.learnArrow}
+                    aria-hidden="true"
+                  >
                     ↗
                   </span>
                 </button>
               </article>
             ))}
           </div>
-
-          {/* =========================================
-              BOTTOM CTA
-          ========================================= */}
 
           <div className={styles.bottomCta}>
             <div className={styles.ctaContent}>
@@ -342,16 +310,11 @@ export default function Services() {
               onClick={handleConversation}
             >
               Start a Conversation
-
-              <span>↗</span>
+              <span aria-hidden="true">↗</span>
             </button>
           </div>
         </div>
-      </section>
-
-      {/* =========================================
-          SERVICE DETAILS POPUP
-      ========================================= */}
+      </div>
 
       {activeService && (
         <div
@@ -361,22 +324,21 @@ export default function Services() {
           <div
             className={styles.modal}
             onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="service-modal-title"
           >
-            {/* CLOSE */}
-
             <button
               type="button"
               className={styles.closeButton}
               onClick={handleClose}
-              aria-label="Close"
+              aria-label="Close service details"
             >
               ×
             </button>
 
-            {/* MODAL TOP */}
-
             <div className={styles.modalTop}>
-              <div className={styles.modalIcon}>
+              <div className={styles.modalIcon} aria-hidden="true">
                 {activeService.icon}
               </div>
 
@@ -385,11 +347,11 @@ export default function Services() {
                   SERVICE {activeService.number}
                 </span>
 
-                <h2>{activeService.title}</h2>
+                <h2 id="service-modal-title">
+                  {activeService.title}
+                </h2>
               </div>
             </div>
-
-            {/* GUIDANCE */}
 
             <div className={styles.guidanceBox}>
               <div className={styles.guidanceTitle}>
@@ -399,47 +361,38 @@ export default function Services() {
               <p>{activeService.guidance}</p>
             </div>
 
-            {/* WHAT WE PROVIDE */}
-
             <div className={styles.modalBlock}>
               <h3>What we provide</h3>
 
               <div className={styles.pointsGrid}>
                 {activeService.points.map((point) => (
-                  <div
-                    className={styles.point}
-                    key={point}
-                  >
-                    <span className={styles.checkIcon}>
+                  <div className={styles.point} key={point}>
+                    <span
+                      className={styles.checkIcon}
+                      aria-hidden="true"
+                    >
                       ✓
                     </span>
-
                     <span>{point}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* TECHNOLOGIES */}
-
             <div className={styles.modalBlock}>
-              <h3>Technologies & capabilities</h3>
+              <h3>Technologies &amp; capabilities</h3>
 
               <div className={styles.technologyList}>
-                {activeService.technologies.map(
-                  (technology) => (
-                    <span
-                      className={styles.technology}
-                      key={technology}
-                    >
-                      {technology}
-                    </span>
-                  )
-                )}
+                {activeService.technologies.map((technology) => (
+                  <span
+                    className={styles.technology}
+                    key={technology}
+                  >
+                    {technology}
+                  </span>
+                ))}
               </div>
             </div>
-
-            {/* MODAL CTA */}
 
             <div className={styles.modalFooter}>
               <button
@@ -448,8 +401,7 @@ export default function Services() {
                 onClick={handleConversation}
               >
                 Start a Conversation
-
-                <span>↗</span>
+                <span aria-hidden="true">↗</span>
               </button>
 
               <button
@@ -463,6 +415,6 @@ export default function Services() {
           </div>
         </div>
       )}
-    </main>
+    </section>
   );
 }
