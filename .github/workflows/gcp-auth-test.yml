@@ -1,0 +1,33 @@
+name: Test GCP OIDC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  authenticate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: projects/31486353704/locations/global/workloadIdentityPools/github-actions/providers/github
+          service_account: github-actions-deployer@aastha-global-website.iam.gserviceaccount.com
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Verify GCP identity
+        run: |
+          gcloud auth list
+          gcloud config get-value project
+
+      - name: Verify Artifact Registry access
+        run: |
+          gcloud artifacts repositories list \
+            --location=asia-south1 \
+            --project=aastha-global-website
