@@ -1,0 +1,58 @@
+name: Deploy Website DEV
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  PROJECT_ID: aastha-global-website
+  REGION: asia-south1
+  AR_REPOSITORY: aastha-global-website
+  IMAGE_NAME: website
+  CLOUD_RUN_SERVICE: aastha-global-web-dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: projects/31486353704/locations/global/workloadIdentityPools/github-actions/providers/github
+          service_account: github-actions-deployer@aastha-global-website.iam.gserviceaccount.com
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Configure Docker
+        run: |
+          gcloud auth configure-docker ${REGION}-docker.pkg.dev --quiet
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/${AR_REPOSITORY}/${IMAGE_NAME}:${GITHUB_SHA} \
+            .
+
+      - name: Push Docker image
+        run: |
+          docker push \
+            ${REGION}-docker.pkg.dev/${PROJECT_ID}/${AR_REPOSITORY}/${IMAGE_NAME}:${GITHUB_SHA}
+
+      - name: Deploy to Cloud Run DEV
+        run: |
+          gcloud run deploy ${CLOUD_RUN_SERVICE} \
+            --image=${REGION}-docker.pkg.dev/${PROJECT_ID}/${AR_REPOSITORY}/${IMAGE_NAME}:${GITHUB_SHA} \
+            --region=${REGION} \
+            --project=${PROJECT_ID} \
+            --platform=managed \
+            --quiet
