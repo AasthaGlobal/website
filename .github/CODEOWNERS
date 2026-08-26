@@ -1,2 +1,8 @@
 # Default code owner for all files
 * @cmitesh2503
+
+# Deployment workflows require independent review
+.github/workflows/* @miteshchokshi-source
+
+# CODEOWNERS changes require independent review
+.github/CODEOWNERS @miteshchokshi-source
