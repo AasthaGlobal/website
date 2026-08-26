@@ -1,0 +1,61 @@
+name: Deploy Website PROD
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  PROJECT_ID: aastha-global-website
+  REGION: asia-south1
+  AR_REPOSITORY: aastha-global-website
+  IMAGE_NAME: website
+  DEV_SERVICE: aastha-global-web-dev
+  PROD_SERVICE: aastha-global-web-prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+      url: https://aastha-global-web-prod-31486353704.asia-south1.run.app
+
+    steps:
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: projects/31486353704/locations/global/workloadIdentityPools/github-actions/providers/github
+          service_account: github-actions-deployer@aastha-global-website.iam.gserviceaccount.com
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Get image currently deployed to DEV
+        id: dev-image
+        run: |
+          IMAGE=$(gcloud run services describe ${DEV_SERVICE} \
+            --region=${REGION} \
+            --project=${PROJECT_ID} \
+            --format="value(spec.template.spec.containers[0].image)")
+
+          echo "image=${IMAGE}" >> "$GITHUB_OUTPUT"
+          echo "DEV image: ${IMAGE}"
+
+      - name: Deploy exact DEV image to PROD
+        run: |
+          gcloud run deploy ${PROD_SERVICE} \
+            --image="${{ steps.dev-image.outputs.image }}" \
+            --region=${REGION} \
+            --project=${PROJECT_ID} \
+            --platform=managed \
+            --quiet
+
+      - name: Verify PROD deployment
+        run: |
+          gcloud run services describe ${PROD_SERVICE} \
+            --region=${REGION} \
+            --project=${PROJECT_ID} \
+            --format="yaml(status.latestReadyRevisionName,status.traffic,status.url)"
