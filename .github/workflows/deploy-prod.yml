@@ -55,17 +55,14 @@ jobs:
 
       - name: Verify PROD deployment
         run: |
-          URL=$(gcloud run services describe ${PROD_SERVICE} \
-            --region=${REGION} \
-            --project=${PROJECT_ID} \
-            --format="value(status.url)")
+          PROD_URL="https://agits.aasthaglobal.co"
 
-          echo "PROD URL: ${URL}"
+          echo "PROD URL: ${PROD_URL}"
 
           curl --fail --silent --show-error \
             --max-time 30 \
             --retry 3 \
             --retry-delay 5 \
-            "${URL}"
+            "${PROD_URL}"
 
           echo "PROD health check passed"
